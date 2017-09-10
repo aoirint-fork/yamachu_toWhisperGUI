@@ -1,0 +1,3 @@
+[submodule "src/cs/ToWhisperNet"]
+	path = src/cs/ToWhisperNet
+	url = https://github.com/ksasao/toWhisper.git

@@ -1,0 +1,27 @@
+{
+  "name": "towhisper",
+  "version": "1.0.0",
+  "description": "toWhisper",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron src/index.js"    
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yamachu/toWhisper.git"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/yamachu/toWhisper/issues"
+  },
+  "homepage": "https://github.com/yamachu/toWhisper#readme",
+  "dependencies": {
+    "@yamachu/edge": "^8.2.4"
+  },
+  "devDependencies": {
+    "electron": "^1.7.6",
+    "electron-rebuild": "^1.6.0"
+  }
+}

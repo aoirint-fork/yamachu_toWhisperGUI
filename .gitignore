@@ -2,3 +2,10 @@
 *.o
 toWhisper
 *.wav
+
+.python-version
+.vs/
+.vscode/
+/node_modules/
+/src/cs/bin/
+/src/cs/obj/
