@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ささやきジェネレータ</title>
+
+    <!-- Materialize CSS  -->
+    <link href="./css/material-icons.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./css/materialize.min.css">
+    <script>
+    // http://phiary.me/electron-jquery-script-tag-load/
+    // for electron
+    if (typeof module !== 'undefined') {  
+        window.__tempModuleExports__ = module.exports;
+        module.exports = false;
+    }
+    </script>
+
+    <!-- Required Materialize CSS  -->
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/hammer.min.js"></script>
+    <script src="./js/materialize.min.js"></script>
+
+    <script>
+    // for electron
+    if (window.__tempModuleExports__) {  
+        module.exports = window.__tempModuleExports__;
+        window.__tempModuleExports__ = null;
+        delete window.__tempModuleExports__;
+    }
+    </script>
+
+    <style>
+        body {
+            height: 100vh;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 2px;
+            padding-top: 2px;
+        }
+
+        app {
+            flex-grow: 1;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <app></app>
+    
+    <script src="./js/riot+compiler.min.js"></script>
+    <script src="./tags/app.tag" type="riot/tag"></script>
+    <script>riot.mount('app')</script>  
+</body>
+
+</html>

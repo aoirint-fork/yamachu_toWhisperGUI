@@ -1,13 +1,19 @@
-
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netstandard1.6</TargetFramework>
     <RuntimeIdentifiers>win10-x64;osx.10.12-x64;ubuntu.16.04-x64</RuntimeIdentifiers>
+    <EnableDefaultCompileItems>False</EnableDefaultCompileItems>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="DotnetWorld" Version="1.2.2" />
     <PackageReference Include="Edge.js" Version="7.10.1" />
     <PackageReference Include="Microsoft.NETCore.DotNetHostPolicy" Version="1.1.2" />
     <PackageReference Include="Microsoft.NETCore.Runtime.CoreCLR" Version="1.1.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ToWhisper.cs" />
+    <Compile Include="Wave.cs" />
+    <Compile Include="ToWhisperNet\ToWhisperNet\Whisper.cs" />
   </ItemGroup>
 </Project>
