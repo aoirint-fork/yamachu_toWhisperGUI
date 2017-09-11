@@ -12,4 +12,4 @@
 dotnet restore src/cs
 dotnet publish src/cs --runtime osx.10.12-x64 --configuration Release
 
-./node_modules/.bin/electron-packager ./ ToWhisper --platform=darwin --arch=x64
+./node_modules/.bin/electron-packager ./ ToWhisper --platform=darwin --arch=x64 --ignore="node_modules/@yamachu/edge/lib/native" --ignore="\.git(ignore|modules)" --ignore="\.travis\.yml" --ignore="appveyor\.yml" --ignore="tools"
