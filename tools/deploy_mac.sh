@@ -8,6 +8,7 @@
 #     echo 'https://www.microsoft.com/net/core'
 #     exit 1
 # fi
+export PATH=/Users/travis/.dotnet:${PATH}
 
 dotnet restore src/cs
 dotnet publish src/cs --runtime osx.10.12-x64 --configuration Release
