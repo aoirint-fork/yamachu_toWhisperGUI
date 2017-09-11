@@ -1,0 +1,30 @@
+os: unstable
+environment:
+  matrix:
+    - nodejs_version: 6
+install:
+  - ps: Install-Product node $env:nodejs_version
+  - set CI=true
+  - npm install -g npm@latest
+  - set PATH=%APPDATA%\npm;%PATH%
+  - npm install
+  - git submodule update --init
+matrix:
+  fast_finish: true
+build: off
+clone_depth: 1
+test_script:
+  - ./tools/deploy_win.bat
+  - 7z a ToWhisper-win32-x64.zip ToWhisper-win32-x64
+artifacts:
+  - path: /ToWhisper-win32-x64.zip/
+    name: WinZip
+
+deploy:
+  provider: GitHub
+  auth_token:
+    secure: "phbIUL1pW4otTYZTo79JgBo7dznsGhCGU3Jbs8jLhM482kySCkP2oXWofXKMPqtc"
+  artifact: WinZip
+  on:
+    appveyor_repo_tag: true
+  force_update: true
