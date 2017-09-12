@@ -2,6 +2,9 @@ os: unstable
 environment:
   matrix:
     - nodejs_version: 6
+platform:
+  - x64
+  - x86
 install:
   - ps: Install-Product node $env:nodejs_version
   - set CI=true
@@ -15,16 +18,23 @@ build: off
 clone_depth: 1
 test_script:
   - ./tools/deploy_win.bat
-  - 7z a ToWhisper-win32-x64.zip ToWhisper-win32-x64
+  - if %platform%==x64 (
+      7z a ToWhisper-win32-x64.zip ToWhisper-win32-x64
+    )
+  - if %platform%==x86 (
+      7z a ToWhisper-win32-ia32.zip ToWhisper-win32-ia32
+    )
 artifacts:
   - path: /ToWhisper-win32-x64.zip/
-    name: WinZip
+    name: WinZip64
+  - path: /ToWhisper-win32-ia32.zip/
+    name: WinZip32
 
 deploy:
   provider: GitHub
   auth_token:
     secure: "phbIUL1pW4otTYZTo79JgBo7dznsGhCGU3Jbs8jLhM482kySCkP2oXWofXKMPqtc"
-  artifact: WinZip
+  artifact: /ToWhisper-win32-.*.zip/
   on:
     appveyor_repo_tag: true
   force_update: true
