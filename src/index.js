@@ -18,16 +18,16 @@ if (os.platform() === 'darwin') {
   process.env.EDGE_APP_ROOT = path.join(__dirname, 'cs/bin/Release/netstandard1.6/ubuntu.16.04-x64/publish')
 } else {
   if (os.arch() === 'x64') {
-    process.env.EDGE_APP_ROOT = path.join(__dirname, 'cs/bin/x64/Release/netstandard1.6/win10-x64/publish')
+    process.env.EDGE_APP_ROOT = path.resolve(path.join(__dirname, 'cs/bin/x64/Release/netstandard1.6/win10-x64/publish'))
   } else {
-    process.env.EDGE_APP_ROOT = path.join(__dirname, 'cs/bin/x86/Release/netstandard1.6/win10-x86/publish')
+    process.env.EDGE_APP_ROOT = path.resolve(path.join(__dirname, 'cs/bin/x86/Release/netstandard1.6/win10-x86/publish'))
   }
 }
 
 if (os.platform() === 'darwin' || os.platform() === 'linux') {
   process.env.PATH = path.join(__dirname, 'stub') + ":" + process.env.PATH
 } else {
-  process.env.PATH = path.join(__dirname, 'stub') + ":" + process.env.PATH
+  process.env.PATH = path.resolve(path.join(__dirname, 'stub') + ";" + process.env.PATH)
 }
 
 // Keep a global reference of the window object, if you don't, the window will
