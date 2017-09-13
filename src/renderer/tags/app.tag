@@ -134,7 +134,7 @@
 
             let vowel_output = document.querySelector('#vowel_output').value;
             if (vowel_output !== '') {
-                parameter['vowel_output'] = vowel_output;
+                params['vowel_output_file'] = vowel_output;
             }
 
             ipcRenderer.once('done_synth', (event, args) => {
