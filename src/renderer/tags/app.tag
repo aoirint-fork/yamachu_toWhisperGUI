@@ -60,6 +60,7 @@
     const path = require('path');
     const Dialog = require('electron').remote.dialog;
     const {ipcRenderer} = require('electron');
+    const Encoding = require('encoding-japanese');
 
     isSynthesising = false;
 
@@ -108,6 +109,14 @@
         return p;    
     }
 
+    function _Str2Byte(str) {
+        return new Buffer(Encoding.convert(str, {
+            to: 'UTF8',
+            from: 'ASCII',
+            type: 'string'
+        }));
+    }
+
     function do_synth() {
         let params = {};
         params['dummy'] = null;
@@ -120,7 +129,7 @@
                 });
                 return;
             }
-            params['input_file'] = input;
+            params['input_file'] = _Str2Byte(input);
 
             let output = document.querySelector('#output').value;
             if (output == '') {
@@ -130,11 +139,11 @@
                 });
                 return;
             }
-            params['output_file'] = output;
+            params['output_file'] = _Str2Byte(output);
 
             let vowel_output = document.querySelector('#vowel_output').value;
             if (vowel_output !== '') {
-                params['vowel_output_file'] = vowel_output;
+                params['vowel_output_file'] = _Str2Byte(vowel_output);
             }
 
             ipcRenderer.once('done_synth', (event, args) => {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,8 +20,8 @@ namespace ToWhisper
             {
                 generateWhisper = (JsAPI)(async (_params) => {
                     var paramsPair = (IDictionary<string, object>)_params;
-                    var inputFile = paramsPair["input_file"] as string;
-                    var outputFile = paramsPair["output_file"] as string;
+                    var inputFile = Encoding.UTF8.GetString(paramsPair["input_file"] as byte[]);
+                    var outputFile = Encoding.UTF8.GetString(paramsPair["output_file"] as byte[]);
 
                     var wave = new Wave();
                     try {
@@ -28,7 +29,7 @@ namespace ToWhisper
                         whisper.Convert(wave);
                         wave.Write(outputFile, wave.Data);
                         if (paramsPair.ContainsKey("vowel_output_file")) {
-                            var vowelFile = paramsPair["vowel_output_file"] as string;
+                            var vowelFile = Encoding.UTF8.GetString(paramsPair["vowel_output_file"] as byte[]);
                             wave.Write(vowelFile, wave.EData);
                         }
                     } catch(Exception e) {
