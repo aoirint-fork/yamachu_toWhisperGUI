@@ -1,4 +1,4 @@
-toWhisper
+toWhisperGUI
 =========
 
 音声をささやき声にかえるソフトです．
